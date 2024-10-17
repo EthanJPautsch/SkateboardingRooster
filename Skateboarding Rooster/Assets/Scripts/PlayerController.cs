@@ -19,8 +19,9 @@ public class PlayerController : MonoBehaviour
         movePlayer();
         if(Input.GetButton("Vertical"))
         {
-            moveSpeed = moveSpeed + (1 * Time.deltaTime);
+            moveSpeed = moveSpeed + (2 * Time.deltaTime);
         }
+        moveSpeed = moveSpeed + (1 * Time.deltaTime);
     }
     
     void movePlayer()
