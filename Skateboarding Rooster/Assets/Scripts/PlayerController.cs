@@ -31,10 +31,24 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0, 1, 0);
         }
-
-        //moveSpeed = moveSpeed + (1 * Time.deltaTime);
-        rb.AddForce(transform.forward * moveSpeed);
-        speed = rb.velocity.magnitude;
+        if (speed >= 15)
+        {
+            
+            rb.AddForce(transform.forward * moveSpeed);
+            speed = rb.velocity.magnitude;
+            speed = 15;
+        }
+        else if(speed < 1)
+        {
+            rb.AddForce(transform.forward * moveSpeed);
+            speed = rb.velocity.magnitude;
+            speed = 1;
+        }
+        else
+        {
+            rb.AddForce(transform.forward * moveSpeed);
+            speed = rb.velocity.magnitude;
+        }
     }
     
     void movePlayer()

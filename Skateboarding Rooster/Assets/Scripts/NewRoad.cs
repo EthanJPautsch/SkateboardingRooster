@@ -7,20 +7,9 @@ public class NewRoad : MonoBehaviour
     [SerializeField] GameObject straightaway;
     [SerializeField] GameObject curve;
     [SerializeField] GameObject reverseCurve;
-    [SerializeField] Transform spawn;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] Transform spawnStraight;
+    [SerializeField] Transform spawnCurve;
+    [SerializeField] Transform spawnReverse;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,18 +25,15 @@ public class NewRoad : MonoBehaviour
         Debug.Log(rand);
         if(rand == 0)
         {
-            Debug.Log("------" + spawn.position);
-            GameObject road = Instantiate(straightaway, spawn.position, Quaternion.identity);
+            GameObject road = Instantiate(straightaway, spawnStraight.position, Quaternion.identity);
         }
         if (rand == 1)
         {
-            Debug.Log("/////" + spawn.position);
-            GameObject road = Instantiate(curve, spawn.position, Quaternion.identity);
+            GameObject road = Instantiate(curve, spawnCurve.position, Quaternion.identity);
         }
         if (rand == 2)
         {
-            Debug.Log("|||||" + spawn.position);
-            GameObject road = Instantiate(reverseCurve, spawn.position, Quaternion.identity);
+            GameObject road = Instantiate(reverseCurve, spawnReverse.position, Quaternion.identity);
         }
 
     }
