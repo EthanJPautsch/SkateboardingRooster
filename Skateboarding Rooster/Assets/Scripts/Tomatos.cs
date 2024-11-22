@@ -10,6 +10,7 @@ public class Tomatos : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("YOU GOT 10 POINTS!");
             GameManager.instance.IncreaseScore(10);
             Destroy(gameObject);
         }

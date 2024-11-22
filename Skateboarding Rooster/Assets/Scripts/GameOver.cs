@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("GAME OVER!");
             GameManager.instance.InitiateGameOver();
         }
     }

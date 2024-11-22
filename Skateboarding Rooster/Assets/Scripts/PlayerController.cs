@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] float moveSpeed;
     [SerializeField] float speed;
+    public float RotateSpeed = 4.0F;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +24,34 @@ public class PlayerController : MonoBehaviour
             moveSpeed = moveSpeed + (2 * Time.deltaTime);
         }
 
-        if(Input.GetButton("Horizontal1"))
+        if(Input.GetButton("Horizontal"))
         {
-            transform.Rotate(0, -1, 0);
+            transform.Rotate(0, Input.GetAxis("Horizontal") * 2, 0);
         }
-        else if(Input.GetButton("Horizontal2"))
+        else if(Input.GetButton("Horizontal"))
         {
-            transform.Rotate(0, 1, 0);
+            transform.Rotate(0, Input.GetAxis("Horizontal") * 2, 0);
         }
+        
+        if (Input.GetButton("Horizontal") && Input.GetButton("Fire1"))
+        {
+            transform.Rotate(0, Input.GetAxis("Horizontal") * RotateSpeed, 0);
+        }
+        else if (Input.GetButton("Horizontal") && Input.GetButton("Fire1"))
+        {
+            transform.Rotate(0, Input.GetAxis("Horizontal") * RotateSpeed, 0);
+        }
+
         if (speed >= 15)
         {
-            
-            rb.AddForce(transform.forward * moveSpeed);
+            rb.AddForce(transform.forward);
             speed = rb.velocity.magnitude;
-            speed = 15;
         }
         else if(speed < 1)
         {
             rb.AddForce(transform.forward * moveSpeed);
             speed = rb.velocity.magnitude;
-            speed = 1;
+            speed = 2;
         }
         else
         {
